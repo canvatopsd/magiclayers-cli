@@ -1,0 +1,53 @@
+{
+  "name": "@canvatopsd/magiclayers",
+  "version": "2.6.1",
+  "description": "MagicLayers native CLI and Agent Skill for image-to-PSD layers, automatic spot-color separations, hosted checkout and verified downloads.",
+  "type": "module",
+  "bin": {
+    "magiclayers": "bin/magiclayers.mjs"
+  },
+  "files": [
+    "bin",
+    "runtime",
+    "skills",
+    "contracts",
+    "doc/usage.md",
+    "release.json"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build:npm": "node deployment/build-npm.mjs",
+    "check:npm": "node deployment/check-npm.mjs",
+    "release:npm": "node deployment/publish-npm.mjs"
+  },
+  "homepage": "https://magiclayers.app/ai-agent/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/canvatopsd/magiclayers-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/canvatopsd/magiclayers-cli/issues"
+  },
+  "author": "CanvaToPSD",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "magiclayers",
+    "psd",
+    "image-layers",
+    "spot-color",
+    "cli",
+    "agent-skills"
+  ],
+  "magiclayers": {
+    "targets": [
+      "darwin-arm64",
+      "linux-x64"
+    ]
+  }
+}

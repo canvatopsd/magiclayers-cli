@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "authentication": "task-scoped access key; no account",
+  "commands": [
+    {
+      "method": "POST",
+      "path": "/api/v2/task/create",
+      "contentType": "multipart/form-data",
+      "description": "Create a guest task and freeze its one-time image quote"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/read",
+      "contentType": "application/json",
+      "description": "Read a task with its private access key"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/access",
+      "contentType": "application/json",
+      "description": "Restore a browser task access cookie"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/config/read",
+      "contentType": "application/json",
+      "description": "Read one-image pricing and guest service configuration"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/checkout/open",
+      "contentType": "application/json",
+      "description": "Return the one-time Creem checkout link"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/paypal/prepare",
+      "contentType": "application/json",
+      "description": "Prepare the task's hosted PayPal checkout"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/paypal/confirm",
+      "contentType": "application/json",
+      "description": "Confirm a PayPal order and capture only after buyer approval"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/payment/read",
+      "contentType": "application/json",
+      "description": "Read the last verified payment state"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/payment/verify",
+      "contentType": "application/json",
+      "description": "Verify an existing provider checkout; queue only verified paid work"
+    },
+    {
+      "method": "POST",
+      "path": "/api/v2/task/delivery/read",
+      "contentType": "application/json",
+      "description": "Verify payment and return short-lived artifact download URLs"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "image-layering",
+      "processingMethod": "editable-text",
+      "settingsRequired": false,
+      "delivery": ["PSD", "preview", "fonts"]
+    },
+    {
+      "id": "spot-print",
+      "processingMethod": "spot-separation",
+      "settingsRequired": false,
+      "settings": {
+        "palette": "auto; extracted from image, up to 12 inks",
+        "process": "spot-screen",
+        "substrate": "white",
+        "dpi": 300
+      },
+      "delivery": [
+        "grayscale TIFF plates",
+        "transparent PNG plates",
+        "RGB layered PSD",
+        "proof",
+        "ZIP"
+      ],
+      "halftone": false,
+      "nativeSpotChannels": false,
+      "CMYK": false
+    }
+  ]
+}
